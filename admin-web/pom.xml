@@ -12,4 +12,13 @@
     <artifactId>admin-web</artifactId>
     <packaging>war</packaging>
 
+    <dependencies>
+        <!--依赖内部项目-->
+        <dependency>
+            <groupId>com.gl.raise</groupId>
+            <artifactId>admin-component</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
 </project>
