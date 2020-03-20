@@ -11,5 +11,11 @@
 
     <artifactId>admin-util</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>tk.mybatis</groupId>
+            <artifactId>mapper</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>
