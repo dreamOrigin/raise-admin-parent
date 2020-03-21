@@ -4,6 +4,8 @@ import com.gl.raise.admin.entity.Admin;
 import com.gl.raise.admin.mapper.AdminMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -26,12 +28,18 @@ public class DataSourceConnectionTest {
     private AdminMapper adminMapper;
 
     /**
+     * 获取日志
+     */
+    private Logger logger = LoggerFactory.getLogger(DataSourceConnectionTest.class);
+
+
+    /**
      * 连接数据库测试
      */
     @Test
     public void connectionTest() throws Exception {
         Connection connection = dataSource.getConnection();
-        System.err.println(connection);
+        logger.info("连接信息: {}", connection.toString());
     }
 
     /**
