@@ -2,6 +2,7 @@ package com.gl.raise.admin.test;
 
 import com.gl.raise.admin.entity.Admin;
 import com.gl.raise.admin.mapper.AdminMapper;
+import com.gl.raise.admin.service.AdminService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -18,7 +19,7 @@ import java.sql.Connection;
  */
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:spring-persist-mybatis.xml"})
+@ContextConfiguration(locations = {"classpath:spring-persist-mybatis.xml", "classpath:spring-persist-tx.xml"})
 public class DataSourceConnectionTest {
 
     @Autowired
@@ -26,6 +27,9 @@ public class DataSourceConnectionTest {
 
     @Autowired
     private AdminMapper adminMapper;
+
+    @Autowired
+    private AdminService adminService;
 
     /**
      * 获取日志
@@ -64,8 +68,40 @@ public class DataSourceConnectionTest {
         System.out.println(admin);
     }
 
+    /**
+     * 测试是否配置好事务
+     */
+    @Test
+    public void txTest() {
+        Admin admin = createDefaultAdmin();
+        adminService.saveAdmin(admin);
+
+    }
+
+    /**
+     * 获取秒级时间戳
+     * @return
+     */
     private Integer timeStamp() {
         String timeStampStr = String.valueOf(System.currentTimeMillis() / 1000);
         return Integer.valueOf(timeStampStr);
+    }
+
+    /**
+     * 创建默认的admin信息, 主要用于测试
+     * @return
+     */
+    private Admin createDefaultAdmin() {
+        Integer timeStamp = timeStamp();
+        Admin admin = new Admin();
+        admin.setAccount("1581285200");
+        admin.setMobile("18296128077");
+        admin.setPassword("gl18296128077");
+        admin.setUsername("罪恶王冠");
+        admin.setEmail("1581285200@qq.com");
+        admin.setCreateTime(timeStamp);
+        admin.setUpdateTime(timeStamp);
+
+        return admin;
     }
 }
