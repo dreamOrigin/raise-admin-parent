@@ -28,7 +28,7 @@
         <javax.persistence.version>2.2</javax.persistence.version>
         <tk.mybatis.mapper.version>4.1.5</tk.mybatis.mapper.version>
 
-        <spring.version>4.3.20.RELEASE</spring.version>
+        <spring.version>5.2.20.RELEASE</spring.version>
         <spring.security.version>4.2.10.RELEASE</spring.security.version>
 
         <aspectjweaver.version>1.9.2</aspectjweaver.version>
